@@ -18,39 +18,51 @@ require_once BASE_PATH . '/app/views/inc/navBar.view.php' ?>
 
 <body>
 
-<!-- dashbordBody start -->
-<div class="dashboard">
-    <div class="card green">
-        <img src="<?=ROOT?>/assets/images/statistics.png" alt="" />
-        <p>Registered Pharmacy</p>
-        <h2><?= $registeredPharmacies ?></h2>
-    </div>
-    <div class="card blue">
-        <img src="<?=ROOT?>/assets/images/computer.png" alt="" />
-        <p>Online Users</p>
-        <h2><?= $onlineUsers ?></h2>
-    </div>
-    <div class="card red">
-        <img src="<?=ROOT?>/assets/images/time-left.png" alt="" />
-        <p>Requested Pharmacy</p>
-        <h2><?= $requestedPharmacies ?></h2>
-    </div>
-</div>
-
-<div class="recent-activity">
-    <h3>Recent Activity</h3>
-    <?php foreach ($recentActivities as $activity): ?>
-        <div class="activity-item">
-            <span class="time"><?= $activity['time'] ?></span>
-            <span class="details"><?= $activity['activity'] ?></span>
+    <!-- dashbordBody start -->
+    <div class="dashboard">
+        <div class="card green">
+            <img src="<?= ROOT ?>/assets/images/statistics.png" alt="" />
+            <p>Registered Pharmacy</p>
+            <h2><?= $registeredPharmacies ?></h2>
         </div>
-    <?php endforeach; ?>
-</div>
-<!-- dashbordBody end -->
+        <div class="card blue">
+            <img src="<?= ROOT ?>/assets/images/computer.png" alt="" />
+            <p>Online Users</p>
+            <h2><?= $onlineUsers ?></h2>
+        </div>
+        <div class="card red">
+            <img src="<?= ROOT ?>/assets/images/time-left.png" alt="" />
+            <p>Requested Pharmacy</p>
+            <h2><?= $requestedPharmacies ?></h2>
+        </div>
 
-<script>
-    var ROOT = '<?= ROOT ?>';
-</script>
-<script src="<?= ROOT ?>/assets/js/admin/dashboard.js"></script>
+        <div class="card yellow">
+            <img src="<?= ROOT ?>/assets/images/time-left.png" alt="" />
+            <p>Total Drivers</p>
+            <h2><?= $requestedPharmacies ?></h2>
+        </div>
 
-<?php require_once  BASE_PATH . '/app/views/inc/footer.view.php' ?>
+        <div class="card red">
+            <img src="<?= ROOT ?>/assets/images/time-left.png" alt="" />
+            <p>Requested Drivers</p>
+            <h2><?= $requestedPharmacies ?></h2>
+        </div>
+    </div>
+
+    <div class="recent-activity">
+        <h3>Recent Activity</h3>
+        <?php foreach ($recentActivities as $activity): ?>
+            <div class="activity-item">
+                <span class="time"><?= $activity['time'] ?></span>
+                <span class="details"><?= $activity['activity'] ?></span>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <!-- dashbordBody end -->
+
+    <script>
+        var ROOT = '<?= ROOT ?>';
+    </script>
+    <script src="<?= ROOT ?>/assets/js/admin/dashboard.js"></script>
+
+    <?php require_once  BASE_PATH . '/app/views/inc/footer.view.php' ?>

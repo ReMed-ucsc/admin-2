@@ -11,3 +11,7 @@
     document.querySelector('.red').addEventListener('click', function() {
         window.location.href =ROOT+'/admin/pendingPharmacy'
     });
+
+    document.querySelector('.yellow').addEventListener('click', function() {
+        window.location.href =ROOT+'/admin/pendingDriver'
+    });

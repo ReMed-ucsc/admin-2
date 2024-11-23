@@ -26,6 +26,10 @@
             <h1 class="h3 mb-3 fw-normal">Create account</h1>
 
             <div class="form-floating">
+                <input name="name" type="name" class="form-control" id="floatingName" placeholder="name">
+                <label for="floatingInput">Username</label>
+            </div>
+            <div class="form-floating">
                 <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
             </div>
@@ -33,6 +37,19 @@
                 <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
+            <div class="form-floating">
+                <input name="age" type="number" class="form-control" id="floatingAge" placeholder="Age">
+                <label for="floatingAge">Age</label>
+            </div>
+            <div class="form-floating">
+                <input name="address" type="text" class="form-control" id="floatingInput" placeholder="address">
+                <label for="floatingAddress">address</label>
+            </div>
+            <div class="form-floating">
+                <input name="contact" type="text" class="form-control" id="floatingInput" placeholder="contact">
+                <label for="floatingContact">contact</label>
+            </div>
+
 
             <div class="checkbox mb-3">
                 <label>

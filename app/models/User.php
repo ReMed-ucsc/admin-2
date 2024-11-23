@@ -55,11 +55,14 @@ class User
         $this->update($email, $data, 'email');
     }
 
-    public function registerUser($name, $email, $password)
+    public function registerUser($name, $email, $password, $age, $address, $contact)
     {
         $data = [
             'name' => $name,
             'email' => $email,
+            'age' => $age,
+            'address' => $address,
+            'contact' => $contact,
             'password' => password_hash($password, PASSWORD_DEFAULT)
         ];
         return $this->insert($data);

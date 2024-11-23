@@ -1,26 +1,85 @@
 <?php
 
+// class PharmacyDetails
+// {
+//     use Controller;
+
+//     public function index()
+//     {
+//         // Protect the route
+//         $this->protectRoute();
+
+//         // Get session data
+//         $pharmacyId = $this->getSession('pharmacy_id');
+//         $pharmacyName = $this->getSession('pharmacy_name');
+//         $authToken = $this->getSession('auth_token');
+
+//         // Get all users
+//         $PharmacyModel = new Pharmacy();
+//         $pharmacy = $PharmacyModel->findAll();
+
+//         // Pass session data to the view
+//         $data = [
+//             'pharmacyName' => $pharmacyName,
+//             'pharmacyId' => $pharmacyId,
+//             'authToken' => $authToken,
+//             'pharmacy' => $pharmacy
+//         ];
+
+//         $this->view('admin/pharmacyDetails', $data);
+//     }
+
+//     public function pharmacydelete($id)
+//     {
+//         // Protect the route
+//         $this->protectRoute();
+
+//         $pharmacyModel = new Pharmacy();
+//         $pharmacyModel->delete($id, 'PharmacyID');
+//         redirect('PharmacyDetails');
+//         exit();
+//     }
+
+//     // add other methods like edit, update, delete, etc.
+// }
+
+// PharmacyDetails.php (Controller)
 class PharmacyDetails
 {
     use Controller;
+
     public function index()
     {
-        // $user = new User;
-        // $arr['email'] = "name@example.com";
+        // Protect the route
+        $this->protectRoute();
 
-        // $result = $model->where(data_for_filtering, data_not_for_filtering);
-        // $result = $model->insert(insert_data);
-        // $result = $model->update(filtering_data updating_data, id_column_for_filtering);
-        // $result = $model->delete(id, id_column);
-        // $result = $user->findAll();
+        // Get session data
+        $pharmacyId = $this->getSession('pharmacy_id');
+        $pharmacyName = $this->getSession('pharmacy_name');
+        $authToken = $this->getSession('auth_token');
 
-        // show($result);
+        // Get all pharmacies
+        $PharmacyModel = new Pharmacy();
+        $pharmacy = $PharmacyModel->findAll();
 
-        // $data['username'] = empty($_SESSION['USER']) ? 'User' : $_SESSION['USER']->email;
+        if ($pharmacy === false) {
+            $pharmacy = []; // Set to empty array if query fails
+            // Optionally set an error message
+            $this->setSession('error_message', 'Failed to fetch pharmacy data');
+        }
+        // Pass session data to the view
+        $data = [
+            'pharmacyName' => $pharmacyName,
+            'pharmacyId' => $pharmacyId,
+            'authToken' => $authToken,
+            'pharmacy' => $pharmacy
+        ];
 
-        $data['username'] = [];
+        $this->unsetSession('error_message');
+        $this->unsetSession('success_message');
+
         $this->view('admin/pharmacyDetails', $data);
     }
 
-    // add other methods like edit, update, delete, etc.
+   
 }

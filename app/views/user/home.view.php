@@ -53,8 +53,8 @@
                             <td><?= htmlspecialchars($user->name) ?></td>
                             <td><?= htmlspecialchars($user->email) ?></td>
                             <td>
-                                <a href="<?= ROOT ?>/dashboard/edit/<?= $user->id ?>">Edit</a>
-                                <a href="<?= ROOT ?>/dashboard/delete/<?= $user->id ?>" onclick="return confirm('Are you sure?')">Delete</a>
+                                <a href="<?= ROOT ?>/Dashboard/edit/<?= $user->id ?>">Edit</a>
+                                <a href="<?= ROOT ?>/Dashboard/delete/<?= $user->id ?>" onclick="return confirm('Are you sure?')">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

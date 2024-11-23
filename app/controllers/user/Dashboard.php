@@ -45,7 +45,7 @@ class Dashboard
             ];
 
             if ($user->validate($data)) {
-                $user->registerUser($data['name'], $data['email'], $data['password']);
+                $user->registerUser($data['name'], $data['email'], $data['password'], $data['age'], $data['address'], $data['contact']);
                 redirect('dashboard');
                 exit();
             } else {
@@ -65,7 +65,7 @@ class Dashboard
         $user = $userModel->first(['id' => $id]);
 
         if (!$user) {
-            redirect('dashboard');
+            redirect('home');
             exit();
         }
 
@@ -103,7 +103,7 @@ class Dashboard
 
         $userModel = new User();
         $userModel->delete($id, 'id');
-        redirect('dashboard');
+        redirect('Dashboard');
         exit();
     }
 }

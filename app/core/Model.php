@@ -90,9 +90,10 @@ trait Model
             foreach ($keys_not as $key) {
                 $query .= $key . " != :" . $key . " AND ";
             }
+            $query = rtrim($query, "  AND ");
         }
 
-        $query = rtrim($query, "  AND ");
+        // $query = rtrim($query, "  AND ");
         $query .= " limit $this->limit offset $this->offset";
 
         // show($query);

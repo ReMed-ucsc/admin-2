@@ -28,7 +28,7 @@ function loadEnv($path)
 loadEnv(__DIR__ . '/../../.env');
 
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
-    define('ROOT', 'http://localhost/remed-1.0/public');
+    define('ROOT', 'http://localhost/test/remed-1.0/public');
 } else {
     define('ROOT', 'http://example.com');
 }

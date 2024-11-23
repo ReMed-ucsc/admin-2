@@ -1,12 +1,4 @@
 <?php
-// // Start the session
-// session_start();
-
-// // Check if the user is logged in, if not redirect to login page
-// if (!isset($_SESSION['loggedin'])) {
-//     header("Location: login.php");
-//     exit;
-// }
 
 // Dummy data for the dashboard
 $registeredPharmacies = 123;

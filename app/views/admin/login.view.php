@@ -1,27 +1,5 @@
 <?php
 
-// Check if form is submitted
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Replace these with your own validation/authentication logic
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Example hardcoded credentials for testing
-    $valid_username = 'admin';
-    $valid_password = 'admin123';
-
-    if ($username == $valid_username && $password == $valid_password) {
-        // Set session variables
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username;
-
-        // Redirect to admin dashboard or homepage
-        header("Location:http://localhost/remed-1.0/public/admin/dashboard");
-        exit;
-    } else {
-        $error_message = "Invalid username or password!";
-    }
-}
 require_once BASE_PATH . '/app/views/inc/header.view.php'
 
 ?>
@@ -42,7 +20,7 @@ require_once BASE_PATH . '/app/views/inc/header.view.php'
                 <ul>
                     <li>
                         <label for="username">Username or Email Address:</label><br>
-                        <input type="text" id="username" name="username" placeholder="value" required>
+                        <input type="email" id="username" name="email" placeholder="value" required>
                     </li>
                     <li>
                         <label for="password">Password:</label><br>
@@ -59,6 +37,7 @@ require_once BASE_PATH . '/app/views/inc/header.view.php'
                     <?php } ?>
 
                     <p class="forget">Forget <span><a href="#"> Password</a></span>?</p>
+                    <p class="forget">I haven't Account <span><a href="<?=ROOT?>/admin/signup"> SignUp</a></span>?</p>
             </form>
         </div>
     </div>

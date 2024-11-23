@@ -3,24 +3,90 @@
 class RemovePharmacy
 {
     use Controller;
-    public function index()
+    public function index($id = null)
     {
-        // $user = new User;
-        // $arr['email'] = "name@example.com";
+        // Validate the ID
+        if (!$id || !is_numeric($id)) {
+            // Handle invalid ID
+            $_SESSION['error'] = "Invalid pharmacy ID";
+            redirect('admin/PharmacyDetails'); // Adjust the redirect path as needed
+            return;
+        }
 
-        // $result = $model->where(data_for_filtering, data_not_for_filtering);
-        // $result = $model->insert(insert_data);
-        // $result = $model->update(filtering_data updating_data, id_column_for_filtering);
-        // $result = $model->delete(id, id_column);
-        // $result = $user->findAll();
+        $pharmacy = new Pharmacy();
+        $pharmacyModel = $pharmacy->getPharmacyById($id);
 
-        // show($result);
+        if (!$pharmacyModel) {
+            die("Pharmacy not found!"); // Optional debug message
+        }
 
-        // $data['username'] = empty($_SESSION['USER']) ? 'User' : $_SESSION['USER']->email;
-
-        $data['username'] = [];
+        $data = ['pharmacy' => $pharmacy];
         $this->view('admin/removePharmacy', $data);
+
+        // Adjust the redirect path as needed
+
+
     }
 
-    // add other methods like edit, update, delete, etc.
+
+    public function removePharmacy($action = '', $id = '')
+    {
+        // Protect the route
+        $this->protectRoute();
+
+        if ($action === 'delete' && !empty($id)) {
+            $pharmacyModel = new Pharmacy();
+
+            // Attempt to delete the pharmacy
+            if ($pharmacyModel->delete($id)) {
+                // Set success message in session if needed
+                $this->setSession('success_message', 'Pharmacy deleted successfully');
+            } else {
+                // Set error message in session if needed
+                $this->setSession('error_message', 'Failed to delete pharmacy');
+            }
+
+            // Redirect back to pharmacy listing
+            redirect('admin/pharmacyDetails');
+            exit();
+        }
+
+        // If no action or invalid action, redirect back
+        redirect('admin/pharmacyDetails');
+    }
+
+    //add other methods like edit, update, delete, etc.
 }
+
+    // class RemovePharmacy 
+    // {
+    //     use Controller;
+    //     public function index($id = null)
+    //     {
+    //         // Validate the ID
+    //         if (!$id || !is_numeric($id)) {
+    //             // Handle invalid ID
+    //             $_SESSION['error'] = "Invalid pharmacy ID";
+    //             redirect('admin/PharmacyDetails'); // Adjust the redirect path as needed
+    //             return;
+    //         }
+    
+    //         $pharmacy = new Pharmacy();
+    //         $result = $pharmacy->getPharmacyById($id);
+    
+    //         if (!$result) {
+    //             $_SESSION['error'] = "Pharmacy not found";
+    //             redirect('admin/PharmacyDetails'); // Adjust the redirect path as needed
+    //             return;
+    //         }
+    
+    //         // Perform the deletion
+    //         if ($pharmacy->delete($id, 'PharmacyID')) {
+    //             $_SESSION['success'] = "Pharmacy deleted successfully";
+    //         } else {
+    //             $_SESSION['error'] = "Failed to delete pharmacy";
+    //         }
+    
+    //         redirect('admin/PharmacyDetails'); // Adjust the redirect path as needed
+    //     }
+    // }

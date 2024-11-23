@@ -21,7 +21,7 @@
 .login-container {
     display: flex;
     width: 1300px;
-    height: 600px;
+    height: auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;

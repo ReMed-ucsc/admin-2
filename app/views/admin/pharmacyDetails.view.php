@@ -44,20 +44,20 @@
                         <?php foreach ($pharmacy as $pharmacy_item): ?>
                             <tr>
                                 <td><?= htmlspecialchars($pharmacy_item->PharmacyID) ?></td>
-                                <td><?= htmlspecialchars($pharmacy_item->pharmacyName) ?></td>
-                                <td><?= htmlspecialchars($pharmacy_item->pharmacistName) ?></td>
+                                <td><?= htmlspecialchars($pharmacy_item->name) ?></td>
+                                <td><?= htmlspecialchars($pharmacy_item->pharmacistName ?? 'Nimal') ?></td>
                                 <td><?= htmlspecialchars($pharmacy_item->contactNo) ?></td>
-                                <td><?= htmlspecialchars($pharmacy_item->license) ?></td>
-                                <td><?= htmlspecialchars($pharmacy_item->approvedDate) ?></td>
-                                <td><?= htmlspecialchars($pharmacy_item->email) ?></td>
+                                <td><?= htmlspecialchars($pharmacy_item->RegNo) ?></td>
+                                <td><?= htmlspecialchars($pharmacy_item->approvedDate ?? '2024-10-14') ?></td>
+                                <td><?= htmlspecialchars($pharmacy_item->email ?? 'pharm@gmail.com') ?></td>
                                 <td><?= htmlspecialchars($pharmacy_item->address) ?></td>
-                                <td><?= htmlspecialchars($pharmacy_item->status) ?></td>
+                                <td><?= htmlspecialchars($pharmacy_item->status ?? 'pending') ?></td>
                                 <td>
                                     <a href="<?= ROOT ?>/admin/editPharmacy/<?= htmlspecialchars($pharmacy_item->PharmacyID) ?>">
-                                        <img class="action edit" src="../../public/assets/images/pencil.png" alt="Edit"/>
+                                        <img class="action edit" src="../../public/assets/images/pencil.png" alt="Edit" />
                                     </a>
                                     <a href="<?= ROOT ?>/admin/removePharmacy/index/<?= $pharmacy_item->PharmacyID ?>" onclick="return confirm('Are you sure?')">
-                                        <img class="action remove" src="../../public/assets/images/bin.png" alt="Delete"/>
+                                        <img class="action remove" src="../../public/assets/images/bin.png" alt="Delete" />
                                     </a>
                                 </td>
                             </tr>
@@ -76,4 +76,4 @@
 
     <script src="<?= ROOT ?>/assets/js/admin/pharmacyDetails.js"></script>
 
-<?php require_once BASE_PATH . '/app/views/inc/footer.view.php' ?>
+    <?php require_once BASE_PATH . '/app/views/inc/footer.view.php' ?>
